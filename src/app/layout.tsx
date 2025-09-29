@@ -1,21 +1,36 @@
-'use client'
+import type { Metadata } from "next"
+import "../styles/style.css"
 
-import "../styles/style.css";
-import { QueryClientProvider } from '@tanstack/react-query'
-import { Provider } from 'react-redux'
-import { queryClient } from '@/lib/queryClient'
-import { store } from '@/store/store'
+export const metadata: Metadata = {
+  title: "Token Track Live",
+  description: "Live crypto token price tracker with real-time updates",
+  icons: {
+    icon: "/crypto-image.png",       // favicon
+    apple: "/crypto-image.png",      // for Apple devices
+  },
+  openGraph: {
+    title: "Token Track Live",
+    description: "Track real-time crypto prices like BTC, ETH, SOL, and more",
+    url: "https://token-track-live-jd.vercel.app/",
+    siteName: "Token Track Live",
+    images: ["/crypto-image.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Token Track Live",
+    description: "Track live crypto tokens",
+    images: ["/crypto-image.png"],
+  },
+}
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
     <html lang="en">
-      <body className="dark bg-gray-900 text-white"> {/* dark mode enabled */}
-        <Provider store={store}>
-          <QueryClientProvider client={queryClient}>
-            {children}
-          </QueryClientProvider>
-        </Provider>
-      </body>
+      <body className="bg-gray-900 text-gray-100">{children}</body>
     </html>
   )
 }
