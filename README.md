@@ -43,7 +43,9 @@ npm run dev
 ```
 ## Screenshots
 
-- <img width="910" height="386" alt="app" src="https://github.com/user-attachments/assets/673ba996-5eff-4493-a694-73fbf3ef6f55" />
-- <img width="879" height="424" alt="lighthouse-results-trade-app" src="https://github.com/user-attachments/assets/718c4a84-d532-4787-97ca-7313e04ba78a" />
+- <Image width="915" height="396" alt="app" src="https://github.com/user-attachments/assets/40be4f4a-339b-46bb-a027-185daeea0af2" />
+- <Image width="904" height="444" alt="lighthouse" src="https://github.com/user-attachments/assets/c182fce1-2823-47a3-befa-264c83f0aceb" />
+
+
 
 
