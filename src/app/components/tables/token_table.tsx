@@ -16,15 +16,14 @@ type Props = {
 }
 
 export default function TokenTable({ tokens }: Props) {
-  // Initialize mock WebSocket with optional initial prices
-  const { ticks, isLoading } = useWebsocketMock(
-    tokens.map(t => ({ symbol: t.symbol, price: t.initialPrice || 0 }))
-  )
+  // prepare input for the websocket mock: symbol + price
+  const input = tokens.map((t) => ({ symbol: t.symbol, price: t.initialPrice ?? 0 }))
+  const { ticks, isLoading } = useWebsocketMock(input)
 
   if (isLoading) {
     return (
-      <div className="overflow-x-auto border rounded-lg">
-        <div className="min-w-[600px]">
+      <div className="overflow-hidden border border-gray-700 rounded-lg">
+        <div className="min-w-full">
           {tokens.map((_, i) => (
             <TokenSkeleton key={i} />
           ))}
@@ -38,15 +37,15 @@ export default function TokenTable({ tokens }: Props) {
   }
 
   return (
-    <div className="overflow-x-auto border rounded-lg">
-      <div className="min-w-[600px]">
+    <div className="overflow-hidden border border-gray-700 rounded-lg">
+      <div className="w-full">
         {tokens.map((t) => (
           <TokenRow
             key={t.symbol}
             symbol={t.symbol}
             name={t.name}
-            price={ticks[t.symbol]?.price || 0}
-            changePercent={ticks[t.symbol]?.changePercent || 0}
+            price={ticks[t.symbol]?.price ?? 0}
+            changePercent={ticks[t.symbol]?.changePercent ?? 0}
             onOpen={handleOpen}
           />
         ))}
