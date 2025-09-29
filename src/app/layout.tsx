@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     description: "Track real-time crypto prices like BTC, ETH, SOL, and more",
     url: "https://token-track-live-jd.vercel.app/",
     siteName: "Token Track Live",
-    images: ["/crypto-image.png"], // <-- add an image in /public
+    images: ["/crypto-image.png"],
   },
   twitter: {
     card: "summary_large_image",
