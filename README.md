@@ -13,7 +13,7 @@ Live deployment on Vercel: [https://token-track-live-jd.vercel.app/](https://tok
 - **Token Table** displaying cryptocurrency tokens with live price updates
 - **Popover & Tooltip** using Radix UI for interactive actions
 - **Loading States**: Skeleton shimmer animation while fetching data
-- **Price Updates**: Mock WebSocket updates with smooth green/red flash transitions
+- **Price Updates**: WebSocket updates with smooth green/red flash transitions
 - **Dark Mode** support
 - **Responsive Layout**: Fully functional down to 320px width
 - **Reusable Components**: Atomic architecture with React.memo and DRY principles
@@ -40,3 +40,10 @@ git clone <your-repo-url>
 cd token-table-frontend
 npm install
 npm run dev
+```
+## Screenshots
+
+- <img width="910" height="386" alt="app" src="https://github.com/user-attachments/assets/673ba996-5eff-4493-a694-73fbf3ef6f55" />
+- <img width="879" height="424" alt="lighthouse-results-trade-app" src="https://github.com/user-attachments/assets/718c4a84-d532-4787-97ca-7313e04ba78a" />
+
+
