@@ -5,14 +5,21 @@ import TokenRow from './token_row'
 import TokenSkeleton from './token_skeleton'
 import { useWebsocketMock } from '@/hooks/useWebsocketMock'
 
-type Token = { symbol: string; name: string }
+type Token = {
+  symbol: string
+  name: string
+  initialPrice?: number
+}
 
 type Props = {
   tokens: Token[]
 }
 
 export default function TokenTable({ tokens }: Props) {
-  const { ticks, isLoading } = useWebsocketMock(tokens.map(t => t.symbol))
+  // Initialize mock WebSocket with optional initial prices
+  const { ticks, isLoading } = useWebsocketMock(
+    tokens.map(t => ({ symbol: t.symbol, price: t.initialPrice || 0 }))
+  )
 
   if (isLoading) {
     return (
@@ -47,4 +54,3 @@ export default function TokenTable({ tokens }: Props) {
     </div>
   )
 }
-

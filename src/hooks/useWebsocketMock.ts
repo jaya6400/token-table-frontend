@@ -1,37 +1,44 @@
-'use client'
+import { useEffect, useState } from "react";
 
-import { useEffect, useState } from 'react'
+type TokenTick = {
+  price: number;
+  changePercent: number;
+};
 
-export function useWebsocketMock(symbols: string[]) {
-  const [ticks, setTicks] = useState<Record<string, { price: number; changePercent: number }>>({})
-  const [isLoading, setIsLoading] = useState(true)
+type TokenInput = {
+  symbol: string;
+  price: number;
+};
+
+export const useWebsocketMock = (tokens: TokenInput[]) => {
+  const [ticks, setTicks] = useState<Record<string, TokenTick>>(() => {
+    const initialTicks: Record<string, TokenTick> = {};
+    tokens.forEach(t => {
+      initialTicks[t.symbol] = { price: t.price, changePercent: 0 };
+    });
+    return initialTicks;
+  });
+
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const initial: Record<string, { price: number; changePercent: number }> = {}
-    symbols.forEach((s) => {
-      initial[s] = { price: Math.random() * 1000, changePercent: 0 }
-    })
-    setTicks(initial)
-    setIsLoading(false)
-
     const interval = setInterval(() => {
-      setTicks((prev) => {
-        const updated = { ...prev }
-        symbols.forEach((s) => {
-          const oldPrice = prev[s]?.price || 100
-          const change = (Math.random() - 0.5) * 2
-          const newPrice = oldPrice + change
-          updated[s] = {
-            price: newPrice,
-            changePercent: ((newPrice - oldPrice) / oldPrice) * 100,
-          }
-        })
-        return updated
-      })
-    }, 2000)
+      setTicks(prev => {
+        const updated: Record<string, TokenTick> = {};
+        tokens.forEach(t => {
+          const oldPrice = prev[t.symbol]?.price || t.price;
+          const change = (Math.random() - 0.5) * (oldPrice * 0.01); // ±1% fluctuation
+          const newPrice = +(oldPrice + change).toFixed(2);
+          const changePercent = +(((newPrice - oldPrice) / oldPrice) * 100).toFixed(2);
+          updated[t.symbol] = { price: newPrice, changePercent };
+        });
+        return updated;
+      });
+      setIsLoading(false);
+    }, 800); // update every 800ms
 
-    return () => clearInterval(interval)
-  }, [symbols])
+    return () => clearInterval(interval);
+  }, [tokens]);
 
-  return { ticks, isLoading }
-}
+  return { ticks, isLoading };
+};
