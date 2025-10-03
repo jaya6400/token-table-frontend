@@ -1,5 +1,5 @@
 import { FaBitcoin, FaEthereum } from "react-icons/fa";
-import { SiSolana, SiCardano, SiPolkadot, SiBinance, SiTether, SiLitecoin, SiRipple, SiChainlink, SiTron, SiDogecoin, SiPolygon, SiAvalanche, SiCosmos, SiNear, SiMonero, SiStellar, SiUniswap } from "react-icons/si";
+import { SiSolana, SiCardano, SiPolkadot, SiBinance, SiTether, SiLitecoin, SiRipple, SiChainlink, SiTon, SiDogecoin, SiPolygon, SiCocos, SiNear, SiMonero, SiStellar } from "react-icons/si";
 
 import { IconType } from "react-icons";
 
@@ -18,13 +18,11 @@ export const tokenIcons: TokenIconMap = {
   LTC: SiLitecoin,
   XRP: SiRipple,
   LINK: SiChainlink,
-  TRX: SiTron,
+  TON: SiTon,
   DOGE: SiDogecoin,
   MATIC: SiPolygon,
-  AVAX: SiAvalanche,
-  ATOM: SiCosmos,
+  ATOM: SiCocos,
   NEAR: SiNear,
   XMR: SiMonero,
-  XLM: SiStellar,
-  UNI: SiUniswap,
+  XLM: SiStellar
 };
