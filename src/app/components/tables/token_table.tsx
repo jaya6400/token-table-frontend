@@ -4,6 +4,7 @@ import React from 'react'
 import TokenRow from './token_row'
 import TokenSkeleton from './token_skeleton'
 import { useWebsocketMock } from '@/hooks/useWebsocketMock'
+import { tokenIcons } from '@/utils/tokenIcons'
 
 type Token = {
   symbol: string
@@ -39,16 +40,20 @@ export default function TokenTable({ tokens }: Props) {
   return (
     <div className="overflow-hidden border border-gray-700 rounded-lg">
       <div className="w-full">
-        {tokens.map((t) => (
-          <TokenRow
-            key={t.symbol}
-            symbol={t.symbol}
-            name={t.name}
-            price={ticks[t.symbol]?.price ?? 0}
-            changePercent={ticks[t.symbol]?.changePercent ?? 0}
-            onOpen={handleOpen}
-          />
-        ))}
+        {tokens.map((t) => {
+          const Icon = tokenIcons[t.symbol]
+          return (
+            <TokenRow
+              key={t.symbol}
+              symbol={t.symbol}
+              name={t.name}
+              price={ticks[t.symbol]?.price ?? 0}
+              changePercent={ticks[t.symbol]?.changePercent ?? 0}
+              onOpen={handleOpen}
+              Icon={Icon}
+            />
+          )
+        })}
       </div>
     </div>
   )
