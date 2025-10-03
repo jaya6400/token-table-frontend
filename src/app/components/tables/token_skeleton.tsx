@@ -4,17 +4,26 @@ import React from 'react'
 
 export default function TokenSkeleton() {
   return (
-    <div className="flex items-center gap-4 px-4 py-3 border-b border-gray-200 animate-pulse">
-      <div className="w-10 h-10 bg-gray-200 rounded-full" />
-      <div className="flex-1 space-y-2">
-        <div className="h-3 w-24 bg-gray-200 rounded" />
-        <div className="h-2 w-16 bg-gray-200 rounded" />
+    <div className="token-row">
+      {/* Logo Placeholder */}
+      <div className="token-info">
+        <div className="skeleton" style={{ width: 32, height: 32, borderRadius: '50%' }} />
+        <div>
+          <div className="skeleton" style={{ width: 100, height: 14, marginBottom: 6 }} />
+          <div className="skeleton" style={{ width: 60, height: 12 }} />
+        </div>
       </div>
-      <div className="w-32 space-y-2 text-right">
-        <div className="h-3 w-20 bg-gray-200 rounded ml-auto" />
-        <div className="h-2 w-10 bg-gray-200 rounded ml-auto" />
+
+      {/* Price + Change Placeholder */}
+      <div className="token-right">
+        <div className="token-price">
+          <div className="skeleton" style={{ width: 80, height: 14, marginBottom: 6 }} />
+          <div className="skeleton" style={{ width: 50, height: 12 }} />
+        </div>
+        <div className="token-actions">
+          <div className="skeleton" style={{ width: 60, height: 28, borderRadius: 6 }} />
+        </div>
       </div>
-      <div className="h-6 w-14 bg-gray-200 rounded" />
     </div>
   )
 }
